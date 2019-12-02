@@ -16,7 +16,7 @@ for(i=0; i<40; i+=7){
   dateButton.innerHTML = myDate.toDateString();
   count++;}
   catch(err){
-    console.log("incorrect date");
+    //console.log("incorrect date");
   }
 }
 
@@ -24,6 +24,7 @@ for(i=0; i<40; i+=7){
 // param container = div container used for the rest of the page
 //displays contents for home in div for the rest of the page
 function openHome(container) {
+  //console.log("home clicked")
   removeHighlight();
   var homeButton = document.getElementById("home");
   homeButton.className = "active";
@@ -38,6 +39,7 @@ function openHome(container) {
 /*displays average humidity and maximum temperature
 for that day in div for rest of the page*/
 function onDateClick(data,container,button){
+  //console.log(button.id+" clicked");
   document.getElementById("home").className = "";
   removeHighlight();
   button.className = "active";//highlight date chosen
@@ -50,9 +52,11 @@ function onDateClick(data,container,button){
   for (i=0; i<40; i++){
     var newDate = new Date(data.list[i].dt_txt);
     //checks if date in list is equal to chosen date
+    //console.log(button.textContent + " compared to "+ newDate.toDateString());
     if (button.textContent == newDate.toDateString()){
       var currentDay = ourData.list[i].main;
       //checks if current temp in list is the biggest for that day
+      //console.log("current max temp: "+maxTemp+" compared to "+currentDay.temp_max);
       if (maxTemp<currentDay.temp_max){
         maxTemp = currentDay.temp_max;
       }
